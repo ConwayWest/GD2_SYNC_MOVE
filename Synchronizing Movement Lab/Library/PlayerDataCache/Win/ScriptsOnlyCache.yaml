@@ -376,7 +376,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 426479e1bb32d60152287983d8188be3
+      Hash: 834a43e69a1006b6fb52b4988708bbbd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkTransform
@@ -484,7 +484,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 194d8a50696efe4c811ae8799a37ecf4
+      Hash: 60eb07ee99967770d0802fdd5caf081d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -593,6 +593,5 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Spring 2020/Game Design and Development 2/Assignments/3 - Synchronizing
-    Movement/GD2_SYNC_MOVE/Synchronizing Movement Lab/Builds/Synchronizing Movement
-    Lab.exe
+  playerPath: D:/GD2/GD2_SYNC_MOVE/Synchronizing Movement Lab/Builds/Synchronizing
+    Movement Lab.exe

@@ -8,6 +8,7 @@ public class NetworkTransform : NetworkComponent
     public Vector3 LastPosition = Vector3.zero;
     public Vector3 LastRotation = Vector3.zero;
     public Vector3 LastVelocity = Vector3.zero;
+    public Vector3 LastRotVelocity = Vector3.zero;
     public Rigidbody rb;
 
     public override void HandleMessage(string flag, string value)
@@ -62,6 +63,7 @@ public class NetworkTransform : NetworkComponent
                 rb.rotation = Quaternion.Euler(euler);
             }
         }
+        
         if(flag == "VEL")
         {
             // naive approach
@@ -71,7 +73,21 @@ public class NetworkTransform : NetworkComponent
                                             float.Parse(data[1]),
                                             float.Parse(data[2])
                                             );
+            rb.velocity = targetVel;
         }
+
+        if (flag == "ROTVEL")
+        {
+            // naive approach
+            string[] data = value.Trim(remove).Split(',');
+            Vector3 targetRotVel = new Vector3(
+                                            float.Parse(data[0]),
+                                            float.Parse(data[1]),
+                                            float.Parse(data[2])
+                                            );
+            rb.angularVelocity = targetRotVel;
+        }
+        
     }
 
     public override IEnumerator SlowUpdate()
@@ -92,13 +108,21 @@ public class NetworkTransform : NetworkComponent
                 SendUpdate("ROT", rb.rotation.eulerAngles.ToString());
                 LastRotation = rb.rotation.eulerAngles;
             }
+            
             //Is the velocity different?
             if(LastVelocity != rb.velocity)
             {
-                Debug.Log(rb.velocity);
                 // Send Update
                 SendUpdate("VEL", rb.velocity.ToString());
                 LastVelocity = rb.velocity;
+            }
+
+            // Is the rotational velocity different?
+            if(LastRotVelocity != rb.angularVelocity)
+            {
+                // Send Update
+                SendUpdate("ROTVEL", rb.angularVelocity.ToString());
+                LastRotVelocity = rb.angularVelocity;
             }
 
             if(IsDirty)
