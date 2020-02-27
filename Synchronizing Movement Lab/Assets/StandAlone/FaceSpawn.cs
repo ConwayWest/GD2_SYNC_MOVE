@@ -21,7 +21,7 @@ public class FaceSpawn : NetworkComponent
     {
         while(true)
         {
-            if(IsClient)
+            if(IsClient && IsLocalPlayer)
             {
                 if (!faceSpawned)
                 {

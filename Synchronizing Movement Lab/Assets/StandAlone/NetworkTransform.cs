@@ -31,8 +31,11 @@ public class NetworkTransform : NetworkComponent
                                         float.Parse(data[1]),
                                         float.Parse(data[2])
                                         );
-
-            if((target-rb.position).magnitude < .5f)
+            if((target-rb.position).magnitude < .1f)
+            {
+                // do nothing
+            }
+            else if((target-rb.position).magnitude < .5f)
             {
                 // lerp
                 rb.position = Vector3.Lerp(rb.position, target, .25f);
@@ -53,7 +56,11 @@ public class NetworkTransform : NetworkComponent
                                                 float.Parse(data[2])
                                                 );
 
-            if((euler-rb.rotation.eulerAngles).magnitude < .5f)
+            if((euler-rb.rotation.eulerAngles).magnitude < .1f)
+            {
+                // Do nothing
+            }
+            else if((euler-rb.rotation.eulerAngles).magnitude < .5f)
             {
                 // slerp
                 rb.rotation = Quaternion.Slerp(rb.rotation, Quaternion.Euler(euler), .25f);
@@ -130,6 +137,7 @@ public class NetworkTransform : NetworkComponent
                 SendUpdate("POS", rb.position.ToString());
                 SendUpdate("ROT", rb.rotation.eulerAngles.ToString());
                 SendUpdate("VEL", rb.velocity.ToString());
+                SendUpdate("ROTVEL", rb.angularVelocity.ToString());
                 IsDirty = false;
             }
 

@@ -593,5 +593,6 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/GD2/GD2_SYNC_MOVE/Synchronizing Movement Lab/Builds/Synchronizing
-    Movement Lab.exe
+  playerPath: D:/Spring 2020/Game Design and Development 2/Assignments/3 - Synchronizing
+    Movement/GD2_SYNC_MOVE/Synchronizing Movement Lab/Builds/Synchronizing Movement
+    Lab.exe
